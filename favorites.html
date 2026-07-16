@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Œuvres favorites — Parison Raphaël</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="grainFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+  </filter>
+  <defs>
+    <path id="rune-a" d="M0,-13 L0,13 M0,-5 L7,-13 M0,3 L-7,13"/>
+    <path id="rune-b" d="M-7,-13 L7,13 M7,-13 L-7,13"/>
+    <path id="rune-c" d="M0,-13 L0,13 M0,0 L7,-8 M0,0 L7,8"/>
+  </defs>
+</svg>
+<div class="grain"></div>
+
+<div class="page">
+  <header class="nav">
+    <a href="index.html" class="nav__mark">Parison Raphaël<svg class="rune-mark nav__rune" viewBox="-10 -18 20 36"><use href="#rune-b"/></svg></a>
+    <ul class="nav__links">
+      <li><a href="portrait.html">Portrait</a></li>
+      <li><a href="sortileges.html">Sortilèges</a></li>
+      <li><a href="grimoire.html">Grimoire</a></li>
+      <li><a href="chronique.html">Chronique</a></li>
+      <li><a href="inspirations.html">Inspirations</a></li>
+      <li><a href="favorites.html" class="is-active">Œuvres</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <span class="tag"><span class="tag__dot"></span>Alternance (2 ans) — sept. 2026</span>
+  </header>
+
+  <section class="favorites accent-ember" id="favorites">
+    <div class="section-head reveal" style="padding-top:0;">
+      <span class="section-num"><svg class="rune-mark" viewBox="-10 -18 20 36"><use href="#rune-c"/></svg>VI</span>
+      <span class="mono">Ce que je relis / regarde en boucle</span>
+      <h2 class="display">Mes œuvres favorites</h2>
+    </div>
+    <div class="favorites-grid">
+      <div class="favorite-item reveal">
+        <div class="favorite-item__cover"><img src="assets/covers/all-tomorrows.webp" alt="Couverture — All Tomorrows, C.M. Kösemen" loading="lazy"></div>
+        <p class="mono favorite-item__author">C.M. Kösemen</p>
+        <h3 class="favorite-item__title">All Tomorrows</h3>
+        <p class="favorite-item__note">Une chronique spéculative de l'évolution humaine sur un milliard d'années — glaçante par sa plausibilité.</p>
+      </div>
+      <div class="favorite-item reveal">
+        <div class="favorite-item__cover"><img src="assets/covers/abime-du-temps.jpg" alt="Couverture — Dans l'abîme du temps, H.P. Lovecraft" loading="lazy"></div>
+        <p class="mono favorite-item__author">H.P. Lovecraft</p>
+        <h3 class="favorite-item__title">Dans l'abîme du temps</h3>
+        <p class="favorite-item__note">Le vertige du temps profond, entre érudition scientifique et terreur cosmique.</p>
+      </div>
+      <div class="favorite-item reveal">
+        <div class="favorite-item__cover"><img src="assets/covers/spirale.jpg" alt="Couverture — La Spirale, Junji Ito" loading="lazy"></div>
+        <p class="mono favorite-item__author">Junji Ito</p>
+        <h3 class="favorite-item__title">La Spirale</h3>
+        <p class="favorite-item__note">Une obsession géométrique qui contamine tout un village — l'horreur comme motif qui se répète.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Parison Raphaël</span>
+    <span class="footer__hint" title="Indice : ça glisse, ça n'a pas de pattes.">Un secret se cache sur cette page</span>
+    <span><svg class="rune-mark footer__rune" viewBox="-10 -18 20 36" aria-hidden="true"><use href="#rune-c"/></svg>Graphisme &amp; marketing digital</span>
+  </footer>
+</div>
+
+<div class="snake-overlay" id="snakeOverlay" hidden>
+  <div class="snake-modal">
+    <div class="snake-modal__head">
+      <span class="mono">Rituel — Le Serpent</span>
+      <button class="snake-close" id="snakeClose" aria-label="Fermer">✕</button>
+    </div>
+    <canvas id="snakeCanvas" width="300" height="300"></canvas>
+    <p class="mono" id="snakeScore">Score : 0</p>
+    <p class="mono snake-hint">Flèches pour jouer · Échap pour fermer · Entrée pour rejouer</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

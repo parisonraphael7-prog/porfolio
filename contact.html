@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Parison Raphaël</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="grainFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+  </filter>
+  <defs>
+    <path id="rune-a" d="M0,-13 L0,13 M0,-5 L7,-13 M0,3 L-7,13"/>
+    <path id="rune-b" d="M-7,-13 L7,13 M7,-13 L-7,13"/>
+    <path id="rune-c" d="M0,-13 L0,13 M0,0 L7,-8 M0,0 L7,8"/>
+  </defs>
+</svg>
+<div class="grain"></div>
+
+<div class="page">
+  <header class="nav">
+    <a href="index.html" class="nav__mark">Parison Raphaël<svg class="rune-mark nav__rune" viewBox="-10 -18 20 36"><use href="#rune-b"/></svg></a>
+    <ul class="nav__links">
+      <li><a href="portrait.html">Portrait</a></li>
+      <li><a href="sortileges.html">Sortilèges</a></li>
+      <li><a href="grimoire.html">Grimoire</a></li>
+      <li><a href="chronique.html">Chronique</a></li>
+      <li><a href="inspirations.html">Inspirations</a></li>
+      <li><a href="favorites.html">Œuvres</a></li>
+      <li><a href="contact.html" class="is-active">Contact</a></li>
+    </ul>
+    <span class="tag"><span class="tag__dot"></span>Alternance (2 ans) — sept. 2026</span>
+  </header>
+
+  <section class="contact reveal accent-verdigris" id="contact">
+    <span class="section-num"><svg class="rune-mark" viewBox="-10 -18 20 36"><use href="#rune-c"/></svg>VII</span>
+    <span class="mono">Recherche <span class="hl">alternance (2 ans)</span> — <span class="hl">septembre 2026</span></span>
+    <div class="contact__sigil">
+      <svg viewBox="0 0 300 160" aria-hidden="true">
+        <ellipse cx="150" cy="80" rx="140" ry="60" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <ellipse cx="150" cy="80" rx="110" ry="42" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      </svg>
+      <a class="contact__email" href="mailto:raphael.parison@ynov.com">raphael.parison@ynov.com</a>
+    </div>
+    <svg class="rune-mark contact__rune" viewBox="-10 -18 20 36" aria-hidden="true"><use href="#rune-a"/></svg>
+    <p class="contact__meta">3j entreprise / 2j formation — basé à Lille, Hauts-de-France. Permis B.</p>
+    <ul class="contact__socials">
+      <li><a href="tel:0628484317">06 28 48 43 17</a></li>
+      <li><a href="https://www.linkedin.com/in/rapha%C3%ABl-parison-614067359" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>© 2026 Parison Raphaël</span>
+    <span class="footer__hint" title="Indice : ça glisse, ça n'a pas de pattes.">Un secret se cache sur cette page</span>
+    <span><svg class="rune-mark footer__rune" viewBox="-10 -18 20 36" aria-hidden="true"><use href="#rune-c"/></svg>Graphisme &amp; marketing digital</span>
+  </footer>
+</div>
+
+<div class="snake-overlay" id="snakeOverlay" hidden>
+  <div class="snake-modal">
+    <div class="snake-modal__head">
+      <span class="mono">Rituel — Le Serpent</span>
+      <button class="snake-close" id="snakeClose" aria-label="Fermer">✕</button>
+    </div>
+    <canvas id="snakeCanvas" width="300" height="300"></canvas>
+    <p class="mono" id="snakeScore">Score : 0</p>
+    <p class="mono snake-hint">Flèches pour jouer · Échap pour fermer · Entrée pour rejouer</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
