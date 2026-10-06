@@ -236,7 +236,7 @@
   .btn--solid:hover { background: var(--ember-bright); border-color: var(--ember-bright); }
   .btn--outline:hover { border-color: var(--ember); color: var(--ember-bright); }
 
-  .hero__photo { display: flex; justify-content: center; position: relative; z-index: 1; }
+  .hero__photo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; position: relative; z-index: 1; }
   .hero__photo-frame {
     position: relative;
     width: min(100%, 280px);
@@ -674,6 +674,7 @@
     transition: color 0.2s ease;
   }
   .cv-link:hover { color: var(--ember-bright); }
+  .hero__photo .cv-link { margin-top: 0; }
 
   /* ---------- MANUSCRITS (créations personnelles) ---------- */
   .manuscrits { padding: clamp(3rem, 7vw, 5rem) 0; }
