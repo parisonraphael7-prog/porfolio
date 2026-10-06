@@ -24,7 +24,9 @@
   }
 
   a, button, input, select, textarea, label, summary,
-  [role="button"], [tabindex]:not([tabindex="-1"]) {
+  [role="button"], [tabindex]:not([tabindex="-1"]),
+  .seal-intro, .seal-intro *,
+  .lightbox-overlay, .snake-overlay {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cpath d='M2 17 C8 6 26 6 32 17 C26 28 8 28 2 17 Z' fill='%23D9CDB8' stroke='%230B0906' stroke-width='1.4'/%3E%3Ccircle cx='17' cy='17' r='5' fill='%230B0906'/%3E%3Ccircle cx='17' cy='17' r='2' fill='%23C4441E'/%3E%3C/svg%3E") 17 17, pointer;
   }
 
