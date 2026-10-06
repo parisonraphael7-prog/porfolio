@@ -16,6 +16,79 @@ console.log('%cUn secret se cache sur cette page.', 'font-family:serif;font-size
 console.log('%cIndice : ça glisse, ça n\'a pas de pattes, et ça se joue aux flèches.', 'font-family:monospace;font-size:12px;color:#8C8272;');
 
 (function () {
+  var overlay = document.getElementById('lightboxOverlay');
+  if (!overlay) return;
+  var titleEl = document.getElementById('lightboxTitle');
+  var imageEl = document.getElementById('lightboxImage');
+  var dotsEl = document.getElementById('lightboxDots');
+  var prevBtn = document.getElementById('lightboxPrev');
+  var nextBtn = document.getElementById('lightboxNext');
+  var closeBtn = document.getElementById('lightboxClose');
+  var images = [];
+  var index = 0;
+
+  function render() {
+    var current = images[index];
+    imageEl.src = current.src;
+    imageEl.alt = current.alt || '';
+    dotsEl.innerHTML = '';
+    images.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'lightbox-dot' + (i === index ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Visuel ' + (i + 1));
+      dot.addEventListener('click', function () { index = i; render(); });
+      dotsEl.appendChild(dot);
+    });
+    var multi = images.length > 1;
+    prevBtn.hidden = !multi;
+    nextBtn.hidden = !multi;
+    dotsEl.hidden = !multi;
+  }
+
+  function open(gallery, title) {
+    images = gallery;
+    index = 0;
+    titleEl.textContent = title || '';
+    render();
+    overlay.hidden = false;
+  }
+
+  function close() { overlay.hidden = true; }
+  function prev() { index = (index - 1 + images.length) % images.length; render(); }
+  function next() { index = (index + 1) % images.length; render(); }
+
+  document.querySelectorAll('[data-gallery]').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var gallery;
+      try { gallery = JSON.parse(trigger.getAttribute('data-gallery')); } catch (e) { return; }
+      open(gallery, trigger.getAttribute('data-title'));
+    });
+  });
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+})();
+
+document.querySelectorAll('.footer__hint').forEach(function (btn) {
+  var original = btn.textContent;
+  var hint = "Indice : ça glisse, ça n'a pas de pattes — tape S-N-A-K-E sur ton clavier";
+  btn.addEventListener('click', function () {
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.textContent = expanded ? original : hint;
+  });
+});
+
+(function () {
   var overlay = document.getElementById('snakeOverlay');
   if (!overlay) return;
   var closeBtn = document.getElementById('snakeClose');

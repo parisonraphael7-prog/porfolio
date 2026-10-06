@@ -98,6 +98,8 @@
   }
   .nav__links {
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.6rem;
     gap: clamp(1rem, 3vw, 2rem);
     list-style: none;
     margin: 0;
@@ -244,7 +246,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: grayscale(0.35) sepia(0.2) contrast(1.1) brightness(0.85);
   }
   .hero__photo-corner {
     position: absolute;
@@ -371,6 +372,105 @@
   }
   .plate:hover .plate__link { color: var(--gold); }
 
+  /* ---------- SORTILEGES GRID (autres projets) ---------- */
+  .sortileges-subhead { text-align: center; padding: clamp(2.5rem, 6vw, 4rem) 0 0.5rem; }
+  .sortileges-subhead h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 0.5rem 0 0; color: var(--bone); }
+  .sortileges-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2rem 0 clamp(3rem, 7vw, 5rem);
+  }
+  @media (min-width: 700px) {
+    .sortileges-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .plate--mini { min-height: 0; }
+  .plate__thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    margin: 0 0 1.25rem;
+    background: var(--panel);
+  }
+  button.plate__thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    transition: border-color 0.25s ease;
+  }
+  button.plate__thumb:hover { border-color: var(--ember); }
+  .plate__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.25) sepia(0.15) contrast(1.05) brightness(0.9);
+    transition: filter 0.3s ease;
+  }
+  .plate:hover .plate__thumb img { filter: none; }
+  .plate__thumb--contain { background: var(--bone); padding: 1rem; }
+  .plate__thumb--contain img { object-fit: contain; }
+  .plate__thumb-badge {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    background: rgba(11, 9, 6, 0.75);
+    color: var(--bone);
+    border: 1px solid var(--line);
+    padding: 0.2rem 0.55rem;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+  }
+
+  /* ---------- LIGHTBOX (galerie projet) ---------- */
+  .lightbox-overlay {
+    position: fixed; inset: 0; background: rgba(5, 4, 3, 0.9);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 1.5rem;
+  }
+  .lightbox-overlay[hidden] { display: none; }
+  .lightbox-modal {
+    background: var(--panel-2);
+    border: 1px solid var(--gold);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    display: flex; flex-direction: column; gap: 0.85rem;
+    max-width: min(92vw, 820px); width: 100%;
+    padding: 1.25rem;
+  }
+  .lightbox-modal__head { display: flex; justify-content: space-between; align-items: center; color: var(--bone-dim); gap: 1rem; }
+  .lightbox-stage {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--void);
+    border: 1px solid var(--line);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .lightbox-stage img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .lightbox-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(11, 9, 6, 0.65);
+    border: 1px solid var(--line);
+    color: var(--bone);
+    width: 2.3rem; height: 2.3rem;
+    border-radius: 50%;
+    font-size: 1.3rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-arrow--prev { left: 0.75rem; }
+  .lightbox-arrow--next { right: 0.75rem; }
+  .lightbox-arrow:hover { border-color: var(--ember); color: var(--ember-bright); }
+  .lightbox-dots { display: flex; justify-content: center; gap: 0.5rem; }
+  .lightbox-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); border: none; padding: 0; }
+  .lightbox-dot.is-active { background: var(--ember-bright); }
+  .plate__credit { display: block; margin-top: 0.6rem; color: var(--bone-dim); font-size: 0.78rem; font-style: italic; }
+
   /* ---------- CASE STUDY ---------- */
   .case-study { padding-bottom: clamp(3rem, 7vw, 5rem); }
   .case-study__frame {
@@ -399,6 +499,89 @@
   }
   .case-study__item h3 { font-size: 1.1rem; margin: 0.5rem 0; color: var(--bone); }
   .case-study__item p { margin: 0; color: var(--bone-dim); }
+
+  /* ---------- ROCHEMARA LIVE (carrousel accueil) ---------- */
+  .rochemara-live { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
+  .rochemara-live__head { margin-bottom: 2rem; }
+  .rochemara-live__head h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0.5rem 0 0; color: var(--bone); }
+  .rochemara-carousel {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    margin: 0 0 1.75rem;
+  }
+  .rochemara-carousel__track {
+    display: flex;
+    width: max-content;
+    animation: rochemaraMarquee 32s linear infinite;
+  }
+  .rochemara-carousel:hover .rochemara-carousel__track { animation-play-state: paused; }
+  .rochemara-carousel__track img {
+    height: clamp(220px, 32vw, 360px);
+    width: auto;
+    display: block;
+    border-right: 1px solid var(--line);
+    filter: grayscale(0.2) sepia(0.1) contrast(1.05) brightness(0.92);
+    transition: filter 0.3s ease;
+  }
+  .rochemara-carousel:hover .rochemara-carousel__track img { filter: none; }
+  @keyframes rochemaraMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rochemara-carousel__track { animation: none; overflow-x: auto; }
+    .rochemara-carousel { overflow-x: auto; }
+  }
+
+  /* ---------- PROJECTS TEASER (accueil) ---------- */
+  .projects-teaser { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
+  .projects-teaser__head { margin-bottom: 2rem; }
+  .projects-teaser__head h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0.5rem 0 0; color: var(--bone); }
+  .teaser-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .teaser-tile {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .teaser-tile__thumb {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .teaser-tile__thumb--contain { background: var(--bone); padding: 0.6rem; }
+  .teaser-tile__thumb--contain img { object-fit: contain; }
+  .teaser-tile__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.25) sepia(0.15) contrast(1.05) brightness(0.9);
+    transition: filter 0.3s ease;
+  }
+  @media (hover: hover) {
+    .teaser-tile:hover .teaser-tile__thumb { border-color: var(--ember); transform: translateY(-2px); }
+    .teaser-tile:hover .teaser-tile__thumb img { filter: none; }
+  }
+  .teaser-tile__title {
+    margin-top: 0.6rem;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bone-dim);
+  }
 
   /* ---------- GRIMOIRE (skills) ---------- */
   .grimoire-grid {
@@ -480,6 +663,48 @@
     transition: color 0.2s ease;
   }
   .cv-link:hover { color: var(--ember-bright); }
+
+  /* ---------- MANUSCRITS (créations personnelles) ---------- */
+  .manuscrits { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .manuscript-intro {
+    max-width: 60ch;
+    margin: 0 auto 3rem;
+    text-align: center;
+    color: var(--bone-dim);
+  }
+  .poem {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    padding: clamp(2rem, 5vw, 3rem);
+    background: var(--panel-2);
+    border: 1px solid var(--gold);
+  }
+  .poem__title {
+    text-align: center;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin: 0 0 2rem;
+    color: var(--bone);
+  }
+  .poem__body p {
+    margin: 0 0 1.75rem;
+    color: var(--bone);
+    font-style: italic;
+    line-height: 1.85;
+    text-align: center;
+  }
+  .poem__body p:last-child { margin-bottom: 0; }
+  .manuscript-project {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--verdigris);
+  }
+  .manuscript-project__label { display: block; color: var(--verdigris); margin-bottom: 0.6rem; }
+  .manuscript-project__title { font-size: clamp(1.25rem, 3vw, 1.6rem); margin: 0 0 1rem; color: var(--bone); }
+  .manuscript-project p { margin: 0; color: var(--bone-dim); }
 
   /* ---------- INSPIRATIONS ---------- */
   .inspirations { padding: clamp(3rem, 7vw, 5rem) 0; }
@@ -593,7 +818,7 @@
   .portrait blockquote::before { content: "\201C"; color: var(--ember); }
   .portrait blockquote::after { content: "\201D"; color: var(--ember); }
   .portrait p { color: var(--bone-dim); max-width: 62ch; }
-  .portrait p:first-of-type::first-letter {
+  .portrait p.portrait__lede::first-letter {
     font-family: "Haettenschweiler", Impact, "Arial Narrow", Arial, sans-serif;
     font-size: 3.4rem;
     color: var(--ember);
@@ -624,6 +849,52 @@
     letter-spacing: 0.08em;
     color: var(--bone-dim);
   }
+
+  .portrait__semiology {
+    grid-column: 1 / -1;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .portrait__semiology-head { text-align: center; margin-bottom: 1.5rem; }
+  .portrait__semiology-head h3 { font-size: clamp(1.3rem, 3vw, 1.7rem); margin: 0.5rem 0 0; color: var(--bone); }
+  .portrait__semiology-note {
+    text-align: center;
+    max-width: 48ch;
+    margin: 0 auto 2rem;
+    color: var(--bone-dim);
+    font-style: italic;
+  }
+  .semiology-contrast {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    .semiology-contrast { grid-template-columns: repeat(2, 1fr); }
+  }
+  .semiology-single {
+    max-width: 340px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .semiology-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.1) brightness(0.95);
+    transition: filter 0.3s ease, transform 0.4s ease;
+  }
+  .semiology-single--photo img { filter: none; object-position: center bottom; }
+  @media (hover: hover) {
+    .semiology-single:hover img { filter: none; transform: scale(1.03); }
+  }
+  .portrait__semiology-caption { text-align: center; margin: 1rem 0 0; color: var(--bone-dim); }
 
   /* ---------- CONTACT ---------- */
   .contact {
@@ -695,7 +966,17 @@
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  .footer__hint { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+  .footer__hint {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+  }
+  .footer__hint:hover { color: var(--ember-bright); }
+  .footer__hint[aria-expanded="true"] { color: var(--ember-bright); text-decoration-style: solid; }
 
   /* ---------- REVEAL ---------- */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
