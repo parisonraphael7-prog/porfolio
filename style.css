@@ -547,6 +547,18 @@
     .rochemara-carousel { overflow-x: auto; }
   }
 
+  /* ---------- LE MARCHEUR LIVE (accueil) ---------- */
+  .marcheur-live { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
+  .marcheur-frame {
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    aspect-ratio: 1400 / 738;
+    max-width: 900px;
+    margin: 0 auto 1.75rem;
+    overflow: hidden;
+  }
+  .marcheur-frame iframe { width: 100%; height: 100%; display: block; border: 0; }
+
   /* ---------- PROJECTS TEASER (accueil) ---------- */
   .projects-teaser { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
   .projects-teaser__head { margin-bottom: 2rem; }
