@@ -560,18 +560,16 @@
   .marcheur-frame iframe { width: 100%; height: 100%; display: block; border: 0; }
 
   /* ---------- DATAGRANDEST (accueil) ---------- */
-  .datagrandest-live { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
-  .dge-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1000px; margin: 0 auto 1.75rem; }
-  @media (min-width: 700px) { .dge-grid { grid-template-columns: repeat(2, 1fr); } }
-  .dge-tile { display: grid; gap: 0.5rem; text-decoration: none; color: inherit; }
-  .dge-tile__thumb { border: 1px solid var(--line); background: var(--panel-2); aspect-ratio: 1200 / 630; overflow: hidden; transition: border-color 0.25s ease, transform 0.25s ease; }
-  .dge-tile__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.25) sepia(0.15) contrast(1.05) brightness(0.9); transition: filter 0.3s ease; }
-  @media (hover: hover) {
-    .dge-tile:hover .dge-tile__thumb { border-color: var(--ember); transform: translateY(-2px); }
-    .dge-tile:hover .dge-tile__thumb img { filter: none; }
-  }
-  .dge-tile__title { margin-top: 0.4rem; font-family: "Haettenschweiler", Impact, "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.04em; font-size: 1.5rem; color: var(--bone); }
-  .dge-tile__sub { color: var(--bone-dim); font-size: 0.8rem; }
+  .dge-frame { position: relative; aspect-ratio: 16 / 10; }
+  .dge-frame iframe { pointer-events: none; }
+  .dge-frame__still { display: none; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+  @media (max-width: 699px) { .dge-frame iframe { display: none; } .dge-frame__still { display: block; } }
+  .dge-frame__link { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: 0.9rem; text-decoration: none; }
+  .dge-frame__link span { background: rgba(11, 9, 6, 0.72); border: 1px solid var(--line); color: var(--bone); padding: 0.45rem 0.8rem; font-size: 0.72rem; opacity: 0; transition: opacity 0.25s ease; }
+  .dge-frame__link:hover span, .dge-frame__link:focus-visible span { opacity: 1; }
+  @media (hover: none) { .dge-frame__link span { opacity: 1; } }
+  .dge-track { animation-duration: 44s; }
+  .anchor-only { display: block; position: relative; top: -2rem; }
 
   /* ---------- PROJECTS TEASER (accueil) ---------- */
   .projects-teaser { padding: clamp(2.5rem, 6vw, 4rem) 0; border-bottom: 1px solid var(--line); text-align: center; }
